@@ -9,10 +9,9 @@ CONTRIBUTING.md
 ISSUE_TEMPLATE.md
 karma.conf.js
 tests.webpack.js
+webpack.config.js
 
 example/
 scripts/
-scss/
 src/
-test/
-webpack/
+tests/

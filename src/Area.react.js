@@ -3,15 +3,13 @@ import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {getInnerHeight} from 'utils/d3Utils';
-
 class Area extends React.Component {
   render() {
     const {className, data, height, x, y, ...props} = this.props;
 
     const area = d3.area()
       .x(x)
-      .y0(getInnerHeight(height))
+      .y0(height)
       .y1(y);
 
     return (

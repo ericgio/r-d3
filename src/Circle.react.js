@@ -1,28 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Dots = ({children}) => (
-  <g className="dots">
+export const Circles = ({children}) => (
+  <g className="circles">
     {children}
   </g>
 );
 
-export class Dot extends React.Component {
+export class Circle extends React.Component {
   static propTypes = {
-    radius: PropTypes.number.isRequired,
+    r: PropTypes.number.isRequired,
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
   };
 
   render() {
-    const {x, y, radius} = this.props;
+    const {x, y, r} = this.props;
 
     return (
       <circle
-        className="dot"
+        className="circle"
         cx={x}
         cy={y}
-        r={radius}
+        r={r}
       />
     );
   }

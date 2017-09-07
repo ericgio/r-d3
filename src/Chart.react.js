@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {transform} from 'utils/';
+import {translate} from 'utils/';
 import {MARGIN} from 'constants/margin';
 
 const Chart = ({children, className, height, transform, width}) => (
@@ -24,7 +24,7 @@ Chart.propTypes = {
 };
 
 Chart.defaultProps = {
-  transform: transform(MARGIN.left, MARGIN.top),
+  transform: translate(MARGIN.left, MARGIN.top),
 };
 
 export default Chart;

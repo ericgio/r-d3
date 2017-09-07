@@ -14,12 +14,13 @@ class Axis extends React.Component {
   }
 
   render() {
-    const {className, transform} = this.props;
+    const {children, className, transform} = this.props;
     return (
       <g
         className={cx('axis', className)}
-        transform={transform}
-      />
+        transform={transform}>
+        {children}
+      </g>
     );
   }
 
@@ -57,6 +58,7 @@ Axis.propTypes = {
   ticks: PropTypes.number,
   tickFormat: PropTypes.func,
   tickSize: PropTypes.number,
+  transform: PropTypes.string,
 };
 
 Axis.defaultProps = {

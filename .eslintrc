@@ -1,0 +1,10 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "extends": "ericgio",
+  "globals": {},
+  "parser": "babel-eslint",
+  "rules": {
+  }
+}

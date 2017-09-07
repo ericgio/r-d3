@@ -62,7 +62,6 @@ Axis.propTypes = {
 };
 
 Axis.defaultProps = {
-  ticks: 5,
   tickSize: 6,
 };
 

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {translate} from 'utils/';
-import {MARGIN} from 'constants/margin';
+import translate from './utils/translate';
+import {MARGIN} from './constants/margin';
 
 const Chart = ({children, className, height, transform, width}) => (
   <svg

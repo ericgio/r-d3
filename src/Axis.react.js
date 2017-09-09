@@ -25,7 +25,7 @@ class Axis extends React.Component {
   }
 
   _renderAxis = () => {
-    const {orient, scale, ticks, tickFormat, tickSize} = this.props;
+    const {orient, scale, ticks, tickFormat, tickSize, tickValues} = this.props;
 
     let axis;
     switch (orient) {
@@ -48,6 +48,10 @@ class Axis extends React.Component {
       .tickFormat(tickFormat)
       .tickSize(tickSize);
 
+    if (tickValues) {
+      axis.tickValues(tickValues);
+    }
+
     d3.select(findDOMNode(this)).call(axis);
   };
 }
@@ -58,6 +62,7 @@ Axis.propTypes = {
   ticks: PropTypes.number,
   tickFormat: PropTypes.func,
   tickSize: PropTypes.number,
+  tickValues: PropTypes.array,
   transform: PropTypes.string,
 };
 

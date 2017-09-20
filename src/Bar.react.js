@@ -1,18 +1,14 @@
+import cx from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Bars = ({children}) => (
-  <g className="bars">
-    {children}
-  </g>
-);
-
-export class Bar extends React.Component {
+class Bar extends React.Component {
   render() {
-    const {height, onClick, width, x, y} = this.props;
+    const {className, height, onClick, width, x, y} = this.props;
 
     return (
       <rect
-        className="bar"
+        className={cx('bar', className)}
         height={height}
         onClick={e => onClick && onClick(e)}
         width={width}
@@ -22,3 +18,13 @@ export class Bar extends React.Component {
     );
   }
 }
+
+Bar.propTypes = {
+  height: PropTypes.number.isRequired,
+  onClick: PropTypes.func,
+  width: PropTypes.number.isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+};
+
+export default Bar;

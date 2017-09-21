@@ -1,7 +1,8 @@
+import cx from 'classnames';
 import React from 'react';
 
-const Bars = ({children}) => (
-  <g className="bars">
+const Bars = ({children, className}) => (
+  <g className={cx('bars', className)}>
     {children}
   </g>
 );

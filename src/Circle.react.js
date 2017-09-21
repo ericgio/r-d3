@@ -1,25 +1,14 @@
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Circles = ({children}) => (
-  <g className="circles">
-    {children}
-  </g>
-);
-
-export class Circle extends React.Component {
-  static propTypes = {
-    r: PropTypes.number.isRequired,
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-  };
-
+class Circle extends React.Component {
   render() {
-    const {x, y, r} = this.props;
+    const {className, x, y, r} = this.props;
 
     return (
       <circle
-        className="circle"
+        className={cx('circle', className)}
         cx={x}
         cy={y}
         r={r}
@@ -27,3 +16,11 @@ export class Circle extends React.Component {
     );
   }
 }
+
+Circle.propTypes = {
+  r: PropTypes.number.isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+};
+
+export default Circle;

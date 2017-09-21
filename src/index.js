@@ -5,6 +5,7 @@ export Bar from './Bar.react';
 export Bars from './Bars.react';
 export Chart from './Chart.react';
 export Circle from './Circle.react';
+export Circles from './Circles.react';
 export Line from './Line.react';
 export MouseTracker from './MouseTracker.react';
 /* eslint-enable object-curly-spacing */

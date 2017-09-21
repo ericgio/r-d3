@@ -17,6 +17,7 @@ class Line extends React.Component {
         {...props}
         className={cx('line', className)}
         d={line(data)}
+        fill="none"
       />
     );
   }

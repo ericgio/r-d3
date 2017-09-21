@@ -4,32 +4,16 @@ import * as d3 from 'd3';
 import React from 'react';
 import {render} from 'react-dom';
 
-import {Axis, Chart, Line} from '../src';
+import {Area, Axis, Bar, Bars, Chart, Circle, Circles, Line} from '../src';
 import {getInnerHeight, getInnerWidth, translate} from '../src/utils';
 
-const DISTANCE_MAX = 100;
-const DISTANCE_MIN = 0;
-
-const SEC_PER_HR = 3600;
-
-const SILVER_BUCKLE = 24 * SEC_PER_HR;
-
-const TIME_MAX = 30 * SEC_PER_HR;
-const TIME_MIN = 0;
-
-function secondsToTime(seconds) {
-  seconds = parseInt(seconds, 10);
-
-  let h = Math.floor(seconds / 3600);
-  let m = Math.floor((seconds - (h * 3600)) / 60);
-  let s = seconds - (h * 3600) - (m * 60);
-
-  h = h < 10 ? '0' + h : h;
-  m = m < 10 ? '0' + m : m;
-  s = s < 10 ? '0' + s : s;
-
-  return `${h}:${m}:${s}`;
-}
+const data = [
+  27.87, 1.49, 0, 18.03, 35.26, 20.43, 40.03, 14.17, 40.49, 55.03,
+  36.01, 33.64, 56.15, 47.86, 62.74, 51.54, 58.04, 40.05, 82.78, 0,
+  22.02, 0, 6.64, 7.17, 6.33, 0, 8.37, 15.35, 0, 24.16, 0, 13.88, 18.65,
+  23.01, 21.02, 10.82, 20.34, 5.21, 10.03, 12.02, 17.11, 13.08, 22.04,
+  29.8, 21.36, 36.51, 33.53, 37.26, 41.52, 23.08, 45.08, 47.57,
+];
 
 class Examples extends React.Component {
   render() {
@@ -39,14 +23,14 @@ class Examples extends React.Component {
     const innerWidth = getInnerWidth(width, margin);
 
     const x = d3.scaleLinear()
-      .domain([DISTANCE_MIN, DISTANCE_MAX])
+      .domain([0, data.length-1])
       .range([0, innerWidth]);
 
     const y = d3.scaleLinear()
-      .domain([TIME_MIN, TIME_MAX])
+      .domain([0, d3.max(data)])
       .range([innerHeight, 0]);
 
-    return (
+    const ExampleChart = props => (
       <Chart
         height={height}
         transform={translate(margin.left, margin.top)}
@@ -55,35 +39,70 @@ class Examples extends React.Component {
           className="x-axis"
           orient="bottom"
           scale={x}
-          ticks={10}
           transform={translate(0, innerHeight)}
         />
         <Axis
           className="y-axis"
           orient="left"
           scale={y}
-          tickFormat={seconds => secondsToTime(seconds)}
-          ticks={30}
-          tickValues={[0, 6, 12, 18, 24, 30].map(t => t * SEC_PER_HR)}
         />
-        <Line
-          className="silver-buckle-cutoff"
-          data={[
-            {distance: DISTANCE_MIN, duration: SILVER_BUCKLE},
-            {distance: DISTANCE_MAX, duration: SILVER_BUCKLE},
-          ]}
-          x={d => x(d.distance)}
-          y={d => y(d.duration)}
-        />
+        {props.children}
       </Chart>
+    );
+
+    return (
+      <div>
+        <h2>Basic Charts</h2>
+        <ExampleChart>
+          <Area
+            data={data}
+            height={innerHeight}
+            x={(d, idx) => x(idx)}
+            y={(d, idx) => y(d)}
+          />
+        </ExampleChart>
+        <ExampleChart>
+          <Line
+            data={data}
+            stroke="#000"
+            x={(d, idx) => x(idx)}
+            y={(d, idx) => y(d)}
+          />
+        </ExampleChart>
+        <ExampleChart>
+          <Circles>
+            {data.map((d, idx) => (
+              <Circle
+                key={idx}
+                r={3}
+                x={x(idx)}
+                y={y(d)}
+              />
+            ))}
+          </Circles>
+        </ExampleChart>
+        <ExampleChart>
+          <Bars>
+            {data.map((d, idx) => (
+              <Bar
+                key={idx}
+                height={innerHeight - y(d)}
+                width={5}
+                x={x(idx)}
+                y={y(d)}
+              />
+            ))}
+          </Bars>
+        </ExampleChart>
+      </div>
     );
   }
 }
 
 render(
   <Examples
-    height={500}
-    width={1000}
+    height={175}
+    width={350}
   />,
   document.getElementById('root')
 );

@@ -85,8 +85,8 @@ class Examples extends React.Component {
           <Bars>
             {data.map((d, idx) => (
               <Bar
-                key={idx}
                 height={innerHeight - y(d)}
+                key={idx}
                 width={5}
                 x={x(idx)}
                 y={y(d)}

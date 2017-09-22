@@ -1,10 +1,17 @@
+// @flow
+
 import cx from 'classnames';
 import React from 'react';
 
-const Bars = ({children, className}) => (
-  <g className={cx('bars', className)}>
-    {children}
-  </g>
+type Props = {
+  className: ?string,
+};
+
+const Bars = (props: Props) => (
+  <g
+    {...props}
+    className={cx('bars', props.className)}
+  />
 );
 
 export default Bars;

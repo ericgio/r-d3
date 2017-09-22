@@ -1,8 +1,16 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+// @flow
 
-class Circle extends React.Component {
+import cx from 'classnames';
+import * as React from 'react';
+
+type Props = {
+  className: ?string,
+  r: number,
+  x: number,
+  y: number,
+};
+
+class Circle extends React.Component<Props> {
   render() {
     const {className, x, y, r} = this.props;
 
@@ -16,11 +24,5 @@ class Circle extends React.Component {
     );
   }
 }
-
-Circle.propTypes = {
-  r: PropTypes.number.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-};
 
 export default Circle;

@@ -1,9 +1,18 @@
+// @flow
+
 import cx from 'classnames';
 import * as d3 from 'd3';
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 
-class Area extends React.Component {
+type Props = {
+  className: ?string,
+  data: Array<any>,
+  height: number,
+  x: Function,
+  y: Function,
+};
+
+class Area extends React.Component<Props> {
   render() {
     const {className, data, height, x, y, ...props} = this.props;
 
@@ -21,12 +30,5 @@ class Area extends React.Component {
     );
   }
 }
-
-Area.propTypes = {
-  data: PropTypes.array.isRequired,
-  height: PropTypes.number.isRequired,
-  x: PropTypes.func.isRequired,
-  y: PropTypes.func.isRequired,
-};
 
 export default Area;

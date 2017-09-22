@@ -1,30 +1,25 @@
+// @flow
+
 import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 
-class Bar extends React.Component {
+type Props = {
+  className: ?string,
+  height: number,
+  width: number,
+  x: number,
+  y: number,
+};
+
+class Bar extends React.Component<Props> {
   render() {
-    const {className, height, onClick, width, x, y} = this.props;
-
     return (
       <rect
-        className={cx('bar', className)}
-        height={height}
-        onClick={e => onClick && onClick(e)}
-        width={width}
-        x={x}
-        y={y}
+        {...this.props}
+        className={cx('bar', this.props.className)}
       />
     );
   }
 }
-
-Bar.propTypes = {
-  height: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
-  width: PropTypes.number.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-};
 
 export default Bar;

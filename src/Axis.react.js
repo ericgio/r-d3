@@ -1,10 +1,28 @@
+// @flow
+
 import cx from 'classnames';
 import * as d3 from 'd3';
-import PropTypes from 'prop-types';
-import React from 'react';
+import invariant from 'invariant';
+import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
-class Axis extends React.Component {
+type Props = {
+  children: React.Node,
+  className: ?string,
+  orient: 'bottom' | 'left' | 'right' | 'top',
+  scale: Function,
+  ticks: ?number,
+  tickFormat: ?Function,
+  tickSize: number,
+  tickValues: ?Array<any>,
+  transform: ?string,
+};
+
+class Axis extends React.Component<Props> {
+  static defaultProps = {
+    tickSize: 6,
+  };
+
   componentDidMount() {
     this._renderAxis();
   }
@@ -43,6 +61,12 @@ class Axis extends React.Component {
         break;
     }
 
+    invariant(
+      axis,
+      'You must set the `orient` prop to one of: `bottom`, `left`, `right`, ' +
+      'or `top`'
+    );
+
     axis
       .ticks(ticks)
       .tickFormat(tickFormat)
@@ -55,19 +79,5 @@ class Axis extends React.Component {
     d3.select(findDOMNode(this)).call(axis);
   };
 }
-
-Axis.propTypes = {
-  orient: PropTypes.oneOf(['bottom', 'left', 'right', 'top']).isRequired,
-  scale: PropTypes.func.isRequired,
-  ticks: PropTypes.number,
-  tickFormat: PropTypes.func,
-  tickSize: PropTypes.number,
-  tickValues: PropTypes.array,
-  transform: PropTypes.string,
-};
-
-Axis.defaultProps = {
-  tickSize: 6,
-};
 
 export default Axis;

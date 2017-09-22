@@ -1,30 +1,27 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+// @flow
 
-import translate from './utils/translate';
-import {MARGIN} from './constants/margin';
+import * as React from 'react';
 
-const Chart = ({children, className, height, transform, width}) => (
-  <svg
-    className={className}
-    height={height}
-    width={width}>
-    <g
-      className="chart"
-      transform={transform}>
-      {children}
-    </g>
-  </svg>
-);
-
-Chart.propTypes = {
-  height: PropTypes.number.isRequired,
-  transform: PropTypes.string,
-  width: PropTypes.number.isRequired,
+type Props = {
+  className: ?string,
+  height: number,
+  width: number,
 };
 
-Chart.defaultProps = {
-  transform: translate(MARGIN.left, MARGIN.top),
+const Chart = (props: Props) => {
+  const {className, height, width, ...otherProps} = props;
+
+  return (
+    <svg
+      className={className}
+      height={height}
+      width={width}>
+      <g
+        {...otherProps}
+        className="chart"
+      />
+    </svg>
+  );
 };
 
 export default Chart;

@@ -5,6 +5,11 @@
   "extends": "ericgio",
   "globals": {},
   "parser": "babel-eslint",
+  "plugins": [
+    "flowtype",
+    "react"
+  ],
   "rules": {
+    "flowtype/define-flow-type": 1,
   }
 }

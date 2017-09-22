@@ -1,9 +1,17 @@
+// @flow
+
 import * as d3 from 'd3';
-import PropTypes from 'prop-types';
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 
-class MouseTracker extends React.Component {
+type Props = {
+  onMouseMove: Function,
+  onMouseOut: Function,
+  xScale: Function,
+  yScale: Function,
+};
+
+class MouseTracker extends React.Component<Props> {
   render() {
     const {onMouseOut, xScale, yScale} = this.props;
 
@@ -23,7 +31,7 @@ class MouseTracker extends React.Component {
     );
   }
 
-  _handleMouseMove = e => {
+  _handleMouseMove = (e: SyntheticMouseEvent<any>): void => {
     // Force the event to persist so D3 can use it.
     e.persist();
 
@@ -40,12 +48,5 @@ class MouseTracker extends React.Component {
     onMouseMove(mouse, xScale, yScale);
   }
 }
-
-MouseTracker.propTypes = {
-  onMouseMove: PropTypes.func.isRequired,
-  onMouseOut: PropTypes.func.isRequired,
-  xScale: PropTypes.func.isRequired,
-  yScale: PropTypes.func.isRequired,
-};
 
 export default MouseTracker;

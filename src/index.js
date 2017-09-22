@@ -1,4 +1,5 @@
 /* eslint-disable object-curly-spacing */
+export Arc from './Arc.react';
 export Area from './Area.react';
 export Axis from './Axis.react';
 export Bar from './Bar.react';

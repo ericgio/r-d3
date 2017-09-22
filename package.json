@@ -29,6 +29,7 @@
   "homepage": "https://github.com/ericgio/r-d3#readme",
   "dependencies": {
     "classnames": "^2.2.0",
+    "invariant": "^2.2.2",
     "prop-types": "^15.5.8"
   },
   "peerDependencies": {

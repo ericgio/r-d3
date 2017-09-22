@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import {translate} from '../src/utils';
+import {translate} from '../../src/utils';
 
 describe('d3Utils', () => {
   it('returns a `translate` string value', () => {

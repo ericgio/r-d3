@@ -25,7 +25,20 @@ module.exports = function(config) {
     reporters: ['dots'],
     webpack: Object.assign(webpackConfigBase, {
       devtool: 'inline-source-map',
+      externals: {
+        'react/lib/ExecutionEnvironment': 'react',
+        'react/lib/ReactContext': 'react',
+        'react-test-renderer': 'react-test-renderer',
+
+        // Silences errors due to a bug in Enzyme:
+        // https://github.com/airbnb/enzyme/issues/1061
+        'react/addons': 'react',
+        'react-addons-test-utils': 'react-dom',
+      },
     }),
+    webpackMiddleware: {
+      stats: 'errors-only',
+    },
     webpackServer: {
       noInfo: true,
     },

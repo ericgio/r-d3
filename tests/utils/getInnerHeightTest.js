@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {getInnerHeight} from '../src/utils';
+import {getInnerHeight} from '../../src/utils';
 
 describe('getInnerHeight', () => {
   it('calculates the inner height, net of margins', () => {

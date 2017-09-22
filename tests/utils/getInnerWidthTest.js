@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {getInnerWidth} from '../src/utils';
+import {getInnerWidth} from '../../src/utils';
 
 describe('getInnerWidth', () => {
   it('calculates the inner width, net of margins', () => {

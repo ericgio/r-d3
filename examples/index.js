@@ -1,11 +1,18 @@
+// @flow
+
 'use strict';
 
 import * as d3 from 'd3';
 import React from 'react';
 import {render} from 'react-dom';
 
-import {Arc, Area, Axis, Bar, Bars, Chart, Circle, Circles, Line} from '../src';
+import {Arc, Area, Axis, Bar, Bars, Chart, Circle, Circles, Line, Symbol} from '../src';
 import {getInnerHeight, getInnerWidth, translate} from '../src/utils';
+
+type Props = {
+  height: number,
+  width: number,
+};
 
 const data = [
   27.87, 1.49, 0, 18.03, 35.26, 20.43, 40.03, 14.17, 40.49, 55.03,
@@ -28,7 +35,7 @@ const pieData = [
   population: d[1],
 }));
 
-class Examples extends React.Component {
+class Examples extends React.Component<Props> {
   render() {
     const {height, width} = this.props;
     const margin = {top: 20, right: 20, bottom: 20, left: 50};
@@ -149,6 +156,11 @@ class Examples extends React.Component {
             </Arc>
           ))}
         </Chart>
+        {d3.symbols.map((type, idx) => (
+          <svg height={100} key={idx} width={100}>
+            <Symbol size={2500} type={type} />
+          </svg>
+        ))}
       </div>
     );
   }

@@ -1,13 +1,20 @@
 // @flow
 
-'use strict';
-
 import * as d3 from 'd3';
 import React from 'react';
 import {render} from 'react-dom';
 
 import {Arc, Area, Axis, Bar, Bars, Chart, Circle, Circles, Line, Symbol} from '../src';
 import {getInnerHeight, getInnerWidth, translate} from '../src/utils';
+
+import AreaChartExample from './examples/AreaChartExample.react';
+import LineChartExample from './examples/LineChartExample.react';
+import ScatterPlotExample from './examples/ScatterPlotExample.react';
+
+import ExampleChart from './components/ExampleChart.react';
+import Section from './components/Section.react';
+
+import './examples.css';
 
 type Props = {
   height: number,
@@ -53,114 +60,92 @@ class Examples extends React.Component<Props> {
     const pie = d3.pie()
       .value(d => d.population);
 
-    const ExampleChart = props => (
-      <Chart
-        height={height}
-        transform={translate(margin.left, margin.top)}
-        width={width}>
-        <Axis
-          className="x-axis"
-          orient="bottom"
-          scale={x}
-          transform={translate(0, innerHeight)}
-        />
-        <Axis
-          className="y-axis"
-          orient="left"
-          scale={y}
-        />
-        {props.children}
-      </Chart>
-    );
-
     return (
-      <div>
-        <h2>Basic Charts</h2>
-        <ExampleChart>
-          <Area
-            data={data}
-            height={innerHeight}
-            x={(d, idx) => x(idx)}
-            y={(d, idx) => y(d)}
-          />
-        </ExampleChart>
-        <ExampleChart>
-          <Line
-            data={data}
-            stroke="#000"
-            x={(d, idx) => x(idx)}
-            y={(d, idx) => y(d)}
-          />
-        </ExampleChart>
-        <ExampleChart>
-          <Circles>
-            {data.map((d, idx) => (
-              <Circle
-                key={idx}
-                r={3}
-                x={x(idx)}
-                y={y(d)}
-              />
+      <div className="container">
+        <ul className="nav">
+          <li>Area</li>
+          <li>Line</li>
+          <li>Scatter</li>
+          <li>Bar</li>
+          <li>Pie</li>
+          <li>Donut</li>
+          <li>Symbols</li>
+        </ul>
+        <div className="column">
+          <AreaChartExample />
+          <LineChartExample />
+          <ScatterPlotExample />
+          <Section title="Bar Chart">
+            <ExampleChart
+              height={height}
+              margin={margin}
+              width={width}
+              x={x}
+              y={y}>
+              <Bars>
+                {data.map((d, idx) => (
+                  <Bar
+                    height={innerHeight - y(d)}
+                    key={idx}
+                    width={5}
+                    x={x(idx)}
+                    y={y(d)}
+                  />
+                ))}
+              </Bars>
+            </ExampleChart>
+          </Section>
+          <Section title="Pie Chart">
+            <Chart
+              height={height}
+              transform={translate(width / 2, height / 2)}
+              width={width}>
+              {pie(pieData).map(({data, index, ...props}) => (
+                <Arc
+                  {...props}
+                  key={index}
+                  outerRadius={height / 2}
+                  stroke="#fff">
+                  <text
+                    fill="#fff"
+                    fontSize="10px"
+                    textAnchor="middle">
+                    {data.age}
+                  </text>
+                </Arc>
+              ))}
+            </Chart>
+          </Section>
+          <Section title="Donut Chart">
+            <Chart
+              height={height}
+              transform={translate(width / 2, height / 2)}
+              width={width}>
+              {pie(pieData).map(({data, index, ...props}) => (
+                <Arc
+                  {...props}
+                  innerRadius={45}
+                  key={index}
+                  outerRadius={height / 2}
+                  stroke="#fff">
+                  <text
+                    fill="#fff"
+                    fontSize="10px"
+                    textAnchor="middle">
+                    {data.age}
+                  </text>
+                </Arc>
+              ))}
+            </Chart>
+          </Section>
+          <Section title="Symbols">
+            {d3.symbols.map((type, idx) => (
+              <svg height={100} key={idx} width={100}>
+                <Symbol size={2500} type={type} />
+              </svg>
             ))}
-          </Circles>
-        </ExampleChart>
-        <ExampleChart>
-          <Bars>
-            {data.map((d, idx) => (
-              <Bar
-                height={innerHeight - y(d)}
-                key={idx}
-                width={5}
-                x={x(idx)}
-                y={y(d)}
-              />
-            ))}
-          </Bars>
-        </ExampleChart>
-        <Chart
-          height={height}
-          transform={translate(width / 2, height / 2)}
-          width={width}>
-          {pie(pieData).map(({data, index, ...props}) => (
-            <Arc
-              {...props}
-              key={index}
-              outerRadius={height / 2}
-              stroke="#fff">
-              <text
-                fill="#fff"
-                fontSize="10px"
-                textAnchor="middle">
-                {data.age}
-              </text>
-            </Arc>
-          ))}
-        </Chart>
-        <Chart
-          height={height}
-          transform={translate(width / 2, height / 2)}
-          width={width}>
-          {pie(pieData).map(({data, index, ...props}) => (
-            <Arc
-              {...props}
-              innerRadius={45}
-              key={index}
-              outerRadius={height / 2}
-              stroke="#fff">
-              <text
-                fill="#fff"
-                fontSize="10px"
-                textAnchor="middle">
-                {data.age}
-              </text>
-            </Arc>
-          ))}
-        </Chart>
-        {d3.symbols.map((type, idx) => (
-          <svg height={100} key={idx} width={100}>
-            <Symbol size={2500} type={type} />
-          </svg>
-        ))}
+          </Section>
+        </div>
       </div>
     );
   }

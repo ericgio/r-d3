@@ -12,10 +12,11 @@ type Props = {
 
 class Circle extends React.Component<Props> {
   render() {
-    const {className, x, y, r} = this.props;
+    const {className, x, y, r, ...props} = this.props;
 
     return (
       <circle
+        {...props}
         className={cx('circle', className)}
         cx={x}
         cy={y}

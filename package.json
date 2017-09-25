@@ -51,6 +51,7 @@
     "chai": "^4.0.2",
     "css-loader": "^0.28.4",
     "d3": "^4.10.2",
+    "dsv-loader": "^2.0.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.1.1",
     "eslint-config-ericgio": "^2.0.0",

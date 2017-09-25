@@ -13,6 +13,15 @@ module.exports = {
           'css-loader',
         ],
       },
+      {
+        test: /\.tsv$/,
+        use: {
+          loader: 'dsv-loader',
+          query: {
+            delimiter: '\t',
+          },
+        },
+      },
     ],
   },
   plugins: [

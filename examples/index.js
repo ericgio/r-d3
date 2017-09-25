@@ -9,6 +9,7 @@ import {getInnerHeight, getInnerWidth, translate} from '../src/utils';
 
 import AreaChartExample from './examples/AreaChartExample.react';
 import LineChartExample from './examples/LineChartExample.react';
+import PieChartExample from './examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
 
 import ExampleChart from './components/ExampleChart.react';
@@ -95,27 +96,7 @@ class Examples extends React.Component<Props> {
               </Bars>
             </ExampleChart>
           </Section>
-          <Section title="Pie Chart">
-            <Chart
-              height={height}
-              transform={translate(width / 2, height / 2)}
-              width={width}>
-              {pie(pieData).map(({data, index, ...props}) => (
-                <Arc
-                  {...props}
-                  key={index}
-                  outerRadius={height / 2}
-                  stroke="#fff">
-                  <text
-                    fill="#fff"
-                    fontSize="10px"
-                    textAnchor="middle">
-                    {data.age}
-                  </text>
-                </Arc>
-              ))}
-            </Chart>
-          </Section>
+          <PieChartExample />
           <Section title="Donut Chart">
             <Chart
               height={height}

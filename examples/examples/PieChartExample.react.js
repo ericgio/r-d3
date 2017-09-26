@@ -12,7 +12,12 @@ import population from '../data/population';
  * Adapted from https://bl.ocks.org/mbostock/3887235
  */
 class PieChartExample extends React.Component {
+  state = {
+    type: 'pie',
+  };
+
   render() {
+    const {type} = this.state;
     const height = 500;
     const width = 960;
     const radius = Math.min(width, height) / 2;
@@ -32,7 +37,20 @@ class PieChartExample extends React.Component {
       .value(d => d.population);
 
     return (
-      <Section title="Pie Chart">
+      <Section title="Pie/Donut Chart">
+        <div style={{left: '10px', position: 'absolute', top: '10px'}}>
+          {['Pie', 'Donut'].map(t => (
+            <label key={t} style={{marginRight: '10px'}}>
+              <input
+                checked={t.toLowerCase() === type}
+                name="pie-example"
+                onChange={this._handleChange}
+                type="radio"
+                value={t.toLowerCase()}
+              /> {t} Chart
+            </label>
+          ))}
+        </div>
         <Chart
           height={height}
           transform={translate(width / 2, height / 2)}
@@ -42,6 +60,7 @@ class PieChartExample extends React.Component {
               {...props}
               childOffset={30}
               fill={color(data.age)}
+              innerRadius={type === 'pie' ? 0 : radius - 70}
               key={index}
               outerRadius={radius - 10}
               stroke="#fff">
@@ -55,6 +74,10 @@ class PieChartExample extends React.Component {
         </Chart>
       </Section>
     );
+  }
+
+  _handleChange = e => {
+    this.setState({type: e.target.value});
   }
 }
 

@@ -7,19 +7,19 @@ import * as React from 'react';
 type Props = {
   className: ?string,
   data: Array<any>,
-  height: number,
-  x: Function,
-  y: Function,
+  x: Function | number,
+  y0: Function | number,
+  y1: Function | number,
 };
 
 class Area extends React.Component<Props> {
   render() {
-    const {className, data, height, x, y, ...props} = this.props;
+    const {className, data, x, y0, y1, ...props} = this.props;
 
     const area = d3.area()
       .x(x)
-      .y0(height)
-      .y1(y);
+      .y0(y0)
+      .y1(y1);
 
     return (
       <path

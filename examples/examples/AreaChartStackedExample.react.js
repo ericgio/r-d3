@@ -73,9 +73,9 @@ class AreaChartStackedExample extends React.Component {
                 <Area
                   data={b}
                   fill={z(b.key)}
-                  height={d => y(d[0])}
                   x={d => x(d.data.date)}
-                  y={d => y(d[1])}
+                  y0={d => y(d[0])}
+                  y1={d => y(d[1])}
                 />
                 <text
                   dy=".35em"

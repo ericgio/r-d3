@@ -64,9 +64,9 @@ class AreaChartExample extends React.Component {
           <Area
             data={data}
             fill="steelblue"
-            height={innerHeight}
             x={d => x(d.date)}
-            y={d => y(d.close)}
+            y0={innerHeight}
+            y1={d => y(d.close)}
           />
         </Chart>
       </Section>

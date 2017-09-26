@@ -6,6 +6,7 @@ import {render} from 'react-dom';
 
 import {Symbol} from '../src';
 import AreaChartExample from './examples/AreaChartExample.react';
+import AreaChartStackedExample from './examples/AreaChartStackedExample.react';
 import BarChartExample from './examples/BarChartExample.react';
 import LineChartExample from './examples/LineChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
@@ -30,6 +31,7 @@ class Examples extends React.Component<{}> {
         </ul>
         <div className="column">
           <AreaChartExample />
+          <AreaChartStackedExample />
           <LineChartExample />
           <ScatterPlotExample />
           <BarChartExample />

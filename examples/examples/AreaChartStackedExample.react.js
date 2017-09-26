@@ -9,7 +9,7 @@ import Section from '../components/Section.react';
 import browserData from '../data/browsers.tsv';
 
 /**
- * Adapted from https://bl.ocks.org/mbostock/3883195
+ * Adapted from https://bl.ocks.org/mbostock/3885211
  */
 class AreaChartStackedExample extends React.Component {
   render() {

@@ -5,22 +5,19 @@ import * as React from 'react';
 
 type Props = {
   className: ?string,
+  cx: number,
+  cy: number,
   r: number,
-  x: number,
-  y: number,
 };
 
 class Circle extends React.Component<Props> {
   render() {
-    const {className, x, y, r, ...props} = this.props;
+    const {className, ...props} = this.props;
 
     return (
       <circle
         {...props}
         className={cx('circle', className)}
-        cx={x}
-        cy={y}
-        r={r}
       />
     );
   }

@@ -74,12 +74,12 @@ class ScatterPlotExample extends React.Component {
           </Axis>
           {data.map((d, idx) => (
             <Circle
+              cx={x(d.sepalWidth)}
+              cy={y(d.sepalLength)}
               fill={color(d.species)}
               key={idx}
               r={3.5}
               stroke="#000"
-              x={x(d.sepalWidth)}
-              y={y(d.sepalLength)}
             />
           ))}
           {color.domain().map((species, i) => (

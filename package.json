@@ -9,7 +9,7 @@
     "examples": "./scripts/buildExamples.sh",
     "flow": "flow",
     "lint": "eslint .",
-    "prepublish": "npm run check && npm run build",
+    "prepublishOnly": "npm run check && npm run build",
     "test": "karma start karma.conf.js"
   },
   "repository": {

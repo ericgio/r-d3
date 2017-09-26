@@ -11,6 +11,7 @@ import BarChartExample from './examples/BarChartExample.react';
 import LineChartExample from './examples/LineChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
+import StreamgraphExample from './examples/StreamgraphExample.react';
 
 import Section from './components/Section.react';
 
@@ -32,6 +33,7 @@ class Examples extends React.Component<{}> {
         <div className="column">
           <AreaChartExample />
           <AreaChartStackedExample />
+          <StreamgraphExample />
           <LineChartExample />
           <ScatterPlotExample />
           <BarChartExample />

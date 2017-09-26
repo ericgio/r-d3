@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React from 'react';
 
-import {Axis, Chart, Circle, Circles} from '../../src';
+import {Axis, Chart, Circle} from '../../src';
 import {getInnerHeight, getInnerWidth, translate} from '../../src/utils';
 
 import Section from '../components/Section.react';

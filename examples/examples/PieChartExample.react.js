@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import React from 'react';
 
 import {Arc, Chart} from '../../src';
-import {getInnerHeight, getInnerWidth, translate} from '../../src/utils';
+import {translate} from '../../src/utils';
 
 import Section from '../components/Section.react';
 

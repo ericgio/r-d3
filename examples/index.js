@@ -13,6 +13,7 @@ import LineChartExample from './examples/LineChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
 import StreamgraphExample from './examples/StreamgraphExample.react';
+import TreemapExample from './examples/TreemapExample.react';
 
 import Section from './components/Section.react';
 
@@ -40,6 +41,7 @@ class Examples extends React.Component<{}> {
           <BarChartExample />
           <BarChartStackedExample />
           <PieChartExample />
+          <TreemapExample />
           <Section title="Symbols">
             {d3.symbols.map((type, idx) => (
               <svg height={100} key={idx} width={100}>

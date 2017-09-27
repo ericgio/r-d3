@@ -2,7 +2,11 @@ import * as d3 from 'd3';
 import React from 'react';
 
 import {Area, Chart} from '../../src';
-import Section from '../components/Section.react';
+
+/* example-start */
+/**
+ * Adapted from https://bl.ocks.org/mbostock/4060954
+ */
 
 function bumps(n, m) {
   let a = [], i;
@@ -22,9 +26,6 @@ function bump(a, n) {
   }
 }
 
-/**
- * Adapted from https://bl.ocks.org/mbostock/4060954
- */
 class StreamgraphExample extends React.Component {
   render() {
     const height = 500;
@@ -54,24 +55,23 @@ class StreamgraphExample extends React.Component {
     var z = d3.interpolateCool;
 
     return (
-      <Section title="Streamgraph">
-        <Chart
-          height={height}
-          width={width}>
-          {layers.map(d => (
-            <Area
-              data={d}
-              fill={z(Math.random())}
-              key={d.key}
-              x={(d, i) => x(i)}
-              y0={d => y(d[0])}
-              y1={d => y(d[1])}
-            />
-          ))}
-        </Chart>
-      </Section>
+      <Chart
+        height={height}
+        width={width}>
+        {layers.map(d => (
+          <Area
+            data={d}
+            fill={z(Math.random())}
+            key={d.key}
+            x={(d, i) => x(i)}
+            y0={d => y(d[0])}
+            y1={d => y(d[1])}
+          />
+        ))}
+      </Chart>
     );
   }
 }
+/* example-end */
 
 export default StreamgraphExample;

@@ -4,10 +4,9 @@ import React from 'react';
 import {Arc, Chart} from '../../src';
 import {translate} from '../../src/utils';
 
-import Section from '../components/Section.react';
-
 import population from '../data/population';
 
+/* example-start */
 /**
  * Adapted from https://bl.ocks.org/mbostock/3887235
  */
@@ -37,7 +36,7 @@ class PieChartExample extends React.Component {
       .value(d => d.population);
 
     return (
-      <Section title="Pie/Donut Chart">
+      <div>
         <div style={{left: '10px', position: 'absolute', top: '10px'}}>
           {['Pie', 'Donut'].map(t => (
             <label key={t} style={{marginRight: '10px'}}>
@@ -72,7 +71,7 @@ class PieChartExample extends React.Component {
             </Arc>
           ))}
         </Chart>
-      </Section>
+      </div>
     );
   }
 
@@ -80,5 +79,6 @@ class PieChartExample extends React.Component {
     this.setState({type: e.target.value});
   }
 }
+/* example-end */
 
 export default PieChartExample;

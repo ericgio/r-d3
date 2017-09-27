@@ -4,10 +4,9 @@ import React from 'react';
 import {Area, Axis, Chart} from '../../src';
 import {getInnerHeight, getInnerWidth, translate} from '../../src/utils';
 
-import Section from '../components/Section.react';
-
 import stockData from '../data/aaplPrice.tsv';
 
+/* example-start */
 /**
  * Adapted from https://bl.ocks.org/mbostock/3883195
  */
@@ -37,41 +36,40 @@ class AreaChartExample extends React.Component {
       .rangeRound([innerHeight, 0]);
 
     return (
-      <Section title="Area Chart">
-        <Chart
-          height={height}
-          transform={translate(margin.left, margin.top)}
-          width={width}>
-          <Axis
-            className="x-axis"
-            orient="bottom"
-            scale={x}
-            transform={translate(0, innerHeight)}
-          />
-          <Axis
-            className="y-axis"
-            orient="left"
-            scale={y}>
-            <text
-              dy="0.71em"
-              fill="#000"
-              textAnchor="end"
-              transform="rotate(-90)"
-              y={6}>
-              Price ($)
-            </text>
-          </Axis>
-          <Area
-            data={data}
-            fill="steelblue"
-            x={d => x(d.date)}
-            y0={innerHeight}
-            y1={d => y(d.close)}
-          />
-        </Chart>
-      </Section>
+      <Chart
+        height={height}
+        transform={translate(margin.left, margin.top)}
+        width={width}>
+        <Axis
+          className="x-axis"
+          orient="bottom"
+          scale={x}
+          transform={translate(0, innerHeight)}
+        />
+        <Axis
+          className="y-axis"
+          orient="left"
+          scale={y}>
+          <text
+            dy="0.71em"
+            fill="#000"
+            textAnchor="end"
+            transform="rotate(-90)"
+            y={6}>
+            Price ($)
+          </text>
+        </Axis>
+        <Area
+          data={data}
+          fill="steelblue"
+          x={d => x(d.date)}
+          y0={innerHeight}
+          y1={d => y(d.close)}
+        />
+      </Chart>
     );
   }
 }
+/* example-end */
 
 export default AreaChartExample;

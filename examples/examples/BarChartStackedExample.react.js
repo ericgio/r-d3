@@ -4,10 +4,9 @@ import React from 'react';
 import {Axis, Bar, Chart} from '../../src';
 import {getInnerHeight, getInnerWidth, translate} from '../../src/utils';
 
-import Section from '../components/Section.react';
-
 import stateData from '../data/statePopulations.csv';
 
+/* example-start */
 /**
  * Adapted from https://bl.ocks.org/mbostock/3886208
  */
@@ -57,69 +56,68 @@ class BarChartStackedExample extends React.Component {
     const stackedData = d3.stack().keys(keys)(data);
 
     return (
-      <Section title="Stacked Bar Chart">
-        <Chart
-          height={height}
-          transform={translate(margin.left, margin.top)}
-          width={width}>
-          <Axis
-            className="x-axis"
-            orient="bottom"
-            scale={x}
-            transform={translate(0, innerHeight)}
-          />
-          <Axis
-            className="y-axis"
-            orient="left"
-            scale={y}
-            tickFormat={pop => `${pop / 1000000}M`}>
-            <text
-              dy="0.32em"
-              fill="#000"
-              fontWeight="bold"
-              textAnchor="start"
-              x={2}
-              y={y(y.ticks().pop()) + 0.5}>
-              Population
-            </text>
-          </Axis>
-          {stackedData.map(d => (
-            <g fill={z(d.key)} key={d.key}>
-              {d.map(s => (
-                <Bar
-                  height={y(s[0]) - y(s[1])}
-                  key={s.data.State}
-                  width={x.bandwidth()}
-                  x={x(s.data.State)}
-                  y={y(s[1])}
-                />
-              ))}
-            </g>
-          ))}
-          {keys.slice().reverse().map((key, i) => (
-            <g
-              className="legend"
-              key={i}
-              transform={translate(0, i * 20)}>
-              <rect
-                fill={z(key)}
-                height={19}
-                width={19}
-                x={innerWidth - 19}
+      <Chart
+        height={height}
+        transform={translate(margin.left, margin.top)}
+        width={width}>
+        <Axis
+          className="x-axis"
+          orient="bottom"
+          scale={x}
+          transform={translate(0, innerHeight)}
+        />
+        <Axis
+          className="y-axis"
+          orient="left"
+          scale={y}
+          tickFormat={pop => `${pop / 1000000}M`}>
+          <text
+            dy="0.32em"
+            fill="#000"
+            fontWeight="bold"
+            textAnchor="start"
+            x={2}
+            y={y(y.ticks().pop()) + 0.5}>
+            Population
+          </text>
+        </Axis>
+        {stackedData.map(d => (
+          <g fill={z(d.key)} key={d.key}>
+            {d.map(s => (
+              <Bar
+                height={y(s[0]) - y(s[1])}
+                key={s.data.State}
+                width={x.bandwidth()}
+                x={x(s.data.State)}
+                y={y(s[1])}
               />
-              <text
-                dy=".35em"
-                textAnchor="end"
-                x={innerWidth - 24}
-                y={9}>
-                {key}
-              </text>
-            </g>
-          ))}
-        </Chart>
-      </Section>
+            ))}
+          </g>
+        ))}
+        {keys.slice().reverse().map((key, i) => (
+          <g
+            className="legend"
+            key={i}
+            transform={translate(0, i * 20)}>
+            <rect
+              fill={z(key)}
+              height={19}
+              width={19}
+              x={innerWidth - 19}
+            />
+            <text
+              dy=".35em"
+              textAnchor="end"
+              x={innerWidth - 24}
+              y={9}>
+              {key}
+            </text>
+          </g>
+        ))}
+      </Chart>
     );
   }
 }
+/* example-end */
 
 export default BarChartStackedExample;

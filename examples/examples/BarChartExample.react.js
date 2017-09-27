@@ -4,10 +4,9 @@ import React from 'react';
 import {Axis, Bar, Chart} from '../../src';
 import {getInnerHeight, getInnerWidth, translate} from '../../src/utils';
 
-import Section from '../components/Section.react';
-
 import data from '../data/letterFrequency.tsv';
 
+/* example-start */
 /**
  * Adapted from https://bl.ocks.org/mbostock/3885304
  */
@@ -29,45 +28,44 @@ class BarChartExample extends React.Component {
       .rangeRound([innerHeight, 0]);
 
     return (
-      <Section title="Bar Chart">
-        <Chart
-          height={height}
-          transform={translate(margin.left, margin.top)}
-          width={width}>
-          <Axis
-            className="x-axis"
-            orient="bottom"
-            scale={x}
-            transform={translate(0, innerHeight)}
+      <Chart
+        height={height}
+        transform={translate(margin.left, margin.top)}
+        width={width}>
+        <Axis
+          className="x-axis"
+          orient="bottom"
+          scale={x}
+          transform={translate(0, innerHeight)}
+        />
+        <Axis
+          className="y-axis"
+          orient="left"
+          scale={y}
+          tickFormat={frequency => `${Math.floor(frequency * 100)}%`}>
+          <text
+            dy="0.71em"
+            fill="#000"
+            textAnchor="end"
+            transform="rotate(-90)"
+            y={6}>
+            Frequency
+          </text>
+        </Axis>
+        {data.map(d => (
+          <Bar
+            fill="steelblue"
+            height={innerHeight - y(d.frequency)}
+            key={d.letter}
+            width={x.bandwidth()}
+            x={x(d.letter)}
+            y={y(d.frequency)}
           />
-          <Axis
-            className="y-axis"
-            orient="left"
-            scale={y}
-            tickFormat={frequency => `${Math.floor(frequency * 100)}%`}>
-            <text
-              dy="0.71em"
-              fill="#000"
-              textAnchor="end"
-              transform="rotate(-90)"
-              y={6}>
-              Frequency
-            </text>
-          </Axis>
-          {data.map(d => (
-            <Bar
-              fill="steelblue"
-              height={innerHeight - y(d.frequency)}
-              key={d.letter}
-              width={x.bandwidth()}
-              x={x(d.letter)}
-              y={y(d.frequency)}
-            />
-          ))}
-        </Chart>
-      </Section>
+        ))}
+      </Chart>
     );
   }
 }
+/* example-end */
 
 export default BarChartExample;

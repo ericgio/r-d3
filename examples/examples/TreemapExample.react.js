@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 import React from 'react';
 
-import Section from '../components/Section.react';
 import data from '../data/flare.csv';
 
+/* example-start */
 /**
  * Adapted from https://bl.ocks.org/mbostock/6bbb0a7ff7686b124d80
  */
@@ -43,51 +43,50 @@ class TreemapExample extends React.Component {
     };
 
     return (
-      <Section title="Treemap">
-        <div style={{height}}>
-          {root.leaves().map(d => (
+      <div style={{height}}>
+        {root.leaves().map(d => (
+          <div
+            className="node"
+            key={d.id}
+            style={{
+              background: getColor(d),
+              boxSizing: 'border-box',
+              height: `${d.y1 - d.y0}px`,
+              left: `${d.x0}px`,
+              overflow: 'hidden',
+              position: 'absolute',
+              top: `${d.y0}px`,
+              width: `${d.x1 - d.x0}px`,
+            }}
+            title={`${d.id}\n${format(d.value)}`}>
             <div
-              className="node"
-              key={d.id}
+              className="node-label"
               style={{
-                background: getColor(d),
-                boxSizing: 'border-box',
-                height: `${d.y1 - d.y0}px`,
-                left: `${d.x0}px`,
-                overflow: 'hidden',
-                position: 'absolute',
-                top: `${d.y0}px`,
-                width: `${d.x1 - d.x0}px`,
-              }}
-              title={`${d.id}\n${format(d.value)}`}>
+                fontSize: '10px',
+                lineHeight: '1em',
+                padding: '4px',
+                whiteSpace: 'pre',
+              }}>
+              {d.id.substring(d.id.lastIndexOf('.') + 1)
+                .split(/(?=[A-Z][^A-Z])/g)
+                .join('\n')
+              }
               <div
-                className="node-label"
+                className="node-value"
                 style={{
-                  fontSize: '10px',
-                  lineHeight: '1em',
-                  padding: '4px',
-                  whiteSpace: 'pre',
+                  color: 'rgba(0,0,0,0.8)',
+                  fontSize: '9px',
+                  marginTop: '1px',
                 }}>
-                {d.id.substring(d.id.lastIndexOf('.') + 1)
-                  .split(/(?=[A-Z][^A-Z])/g)
-                  .join('\n')
-                }
-                <div
-                  className="node-value"
-                  style={{
-                    color: 'rgba(0,0,0,0.8)',
-                    fontSize: '9px',
-                    marginTop: '1px',
-                  }}>
-                  {format(d.value)}
-                </div>
+                {format(d.value)}
               </div>
             </div>
-          ))}
-        </div>
-      </Section>
+          </div>
+        ))}
+      </div>
     );
   }
 }
+/* example-end */
 
 export default TreemapExample;

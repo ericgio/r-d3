@@ -1,10 +1,8 @@
 // @flow
 
-import * as d3 from 'd3';
 import React from 'react';
 import {render} from 'react-dom';
 
-import {Symbol} from '../src';
 import AreaChartExample from './examples/AreaChartExample.react';
 import AreaChartStackedExample from './examples/AreaChartStackedExample.react';
 import BarChartExample from './examples/BarChartExample.react';
@@ -13,9 +11,8 @@ import LineChartExample from './examples/LineChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
 import StreamgraphExample from './examples/StreamgraphExample.react';
+import SymbolsExample from './examples/SymbolsExample.react';
 import TreemapExample from './examples/TreemapExample.react';
-
-import Section from './components/Section.react';
 
 import './examples.css';
 
@@ -42,13 +39,7 @@ class Examples extends React.Component<{}> {
           <BarChartStackedExample />
           <PieChartExample />
           <TreemapExample />
-          <Section title="Symbols">
-            {d3.symbols.map((type, idx) => (
-              <svg height={100} key={idx} width={100}>
-                <Symbol size={2500} type={type} />
-              </svg>
-            ))}
-          </Section>
+          <SymbolsExample />
         </div>
       </div>
     );

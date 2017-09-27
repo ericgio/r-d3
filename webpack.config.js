@@ -22,6 +22,15 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.csv$/,
+        use: {
+          loader: 'dsv-loader',
+          query: {
+            delimiter: ',',
+          },
+        },
+      },
     ],
   },
   plugins: [

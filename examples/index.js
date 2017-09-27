@@ -8,6 +8,7 @@ import {Symbol} from '../src';
 import AreaChartExample from './examples/AreaChartExample.react';
 import AreaChartStackedExample from './examples/AreaChartStackedExample.react';
 import BarChartExample from './examples/BarChartExample.react';
+import BarChartStackedExample from './examples/BarChartStackedExample.react';
 import LineChartExample from './examples/LineChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
@@ -37,6 +38,7 @@ class Examples extends React.Component<{}> {
           <LineChartExample />
           <ScatterPlotExample />
           <BarChartExample />
+          <BarChartStackedExample />
           <PieChartExample />
           <Section title="Symbols">
             {d3.symbols.map((type, idx) => (

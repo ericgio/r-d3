@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -13,6 +11,8 @@ import BarChartStackedExample from './examples/BarChartStackedExample.react';
 import BarChartStackedExampleCode from '!raw-loader!./examples/BarChartStackedExample.react';
 import LineChartExample from './examples/LineChartExample.react';
 import LineChartExampleCode from '!raw-loader!./examples/LineChartExample.react';
+import CandlestickChartExample from './examples/CandlestickChartExample.react';
+import CandlestickChartExampleCode from '!raw-loader!./examples/CandlestickChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import PieChartExampleCode from '!raw-loader!./examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
@@ -87,6 +87,11 @@ class Examples extends React.Component<{}> {
             code={TreemapExampleCode}
             title="Treemap">
             <TreemapExample />
+          </Section>
+          <Section
+            code={CandlestickChartExampleCode}
+            title="Candlestick Chart">
+            <CandlestickChartExample />
           </Section>
           <Section
             code={SymbolsExampleCode}

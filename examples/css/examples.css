@@ -30,8 +30,8 @@ body {
 }
 
 .section pre {
-  background-color: #f5f5f5;
-  border-color: #ddd;
+  background-color: #fafafa;
+  border-color: #eee;
   border-radius: 0 0 4px 4px;
   border-style: solid;
   border-width: 1px 0 0 0;
@@ -41,7 +41,7 @@ body {
 
 .frame {
   border: solid 1px #eee;
-  border-bottom: solid 1px #ccc;
+  border-radius: 5px;
   overflow: scroll;
   position: relative;
 }
@@ -55,4 +55,22 @@ body {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+.candlestick line {
+  stroke: #000;
+}
+
+.gain line {
+  stroke: green;
+}
+.gain rect {
+  fill: green;
+}
+
+.loss line {
+  stroke: red;
+}
+.loss rect {
+  fill: red;
 }

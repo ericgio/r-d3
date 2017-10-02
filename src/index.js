@@ -10,5 +10,6 @@ export Circle from './Circle.react';
 export Circles from './Circles.react';
 export Line from './Line.react';
 export MouseTracker from './MouseTracker.react';
+export OHLC from './OHLC.react';
 export Symbol from './Symbol.react';
 /* eslint-enable object-curly-spacing */

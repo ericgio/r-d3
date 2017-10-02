@@ -11,8 +11,8 @@ import BarChartStackedExample from './examples/BarChartStackedExample.react';
 import BarChartStackedExampleCode from '!raw-loader!./examples/BarChartStackedExample.react';
 import LineChartExample from './examples/LineChartExample.react';
 import LineChartExampleCode from '!raw-loader!./examples/LineChartExample.react';
-import CandlestickChartExample from './examples/CandlestickChartExample.react';
-import CandlestickChartExampleCode from '!raw-loader!./examples/CandlestickChartExample.react';
+import FinancialChartExample from './examples/FinancialChartExample.react';
+import FinancialChartExampleCode from '!raw-loader!./examples/FinancialChartExample.react';
 import PieChartExample from './examples/PieChartExample.react';
 import PieChartExampleCode from '!raw-loader!./examples/PieChartExample.react';
 import ScatterPlotExample from './examples/ScatterPlotExample.react';
@@ -89,9 +89,9 @@ class Examples extends React.Component<{}> {
             <TreemapExample />
           </Section>
           <Section
-            code={CandlestickChartExampleCode}
-            title="Candlestick Chart">
-            <CandlestickChartExample />
+            code={FinancialChartExampleCode}
+            title="Financial Chart">
+            <FinancialChartExample />
           </Section>
           <Section
             code={SymbolsExampleCode}

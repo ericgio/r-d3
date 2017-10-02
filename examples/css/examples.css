@@ -57,7 +57,8 @@ body {
   shape-rendering: crispEdges;
 }
 
-.candlestick line {
+.candlestick line,
+.ohlc line {
   stroke: #000;
 }
 

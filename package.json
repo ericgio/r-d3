@@ -1,6 +1,6 @@
 {
   "name": "r-d3",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "D3 data, React rendering.",
   "main": "lib/index.js",
   "scripts": {

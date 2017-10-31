@@ -19,12 +19,12 @@ class BarChartExample extends React.Component {
     const innerWidth = getInnerWidth(width, margin);
 
     const x = d3.scaleBand()
-      .domain(data.map(d => d.letter))
+      .domain(data.map((d) => d.letter))
       .rangeRound([0, innerWidth])
       .padding(0.1);
 
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.frequency)])
+      .domain([0, d3.max(data, (d) => d.frequency)])
       .rangeRound([innerHeight, 0]);
 
     return (
@@ -42,7 +42,7 @@ class BarChartExample extends React.Component {
           className="y-axis"
           orient="left"
           scale={y}
-          tickFormat={frequency => `${Math.floor(frequency * 100)}%`}>
+          tickFormat={(frequency) => `${Math.floor(frequency * 100)}%`}>
           <text
             dy="0.71em"
             fill="#000"
@@ -52,7 +52,7 @@ class BarChartExample extends React.Component {
             Frequency
           </text>
         </Axis>
-        {data.map(d => (
+        {data.map((d) => (
           <Bar
             fill="steelblue"
             height={innerHeight - y(d.frequency)}

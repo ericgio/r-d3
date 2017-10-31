@@ -14,14 +14,14 @@ const data = [{
 }];
 
 const x = d3.scaleTime()
-  .domain(d3.extent(data, d => d.date))
+  .domain(d3.extent(data, (d) => d.date))
   .rangeRound([0, 100]);
 
 const props = {
   ...data[0],
   width: 5,
   x,
-  y: y => y,
+  y: (y) => y,
 };
 
 describe('<OHLC>', () => {

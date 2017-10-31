@@ -33,12 +33,12 @@ class PieChartExample extends React.Component {
 
     const pie = d3.pie()
       .sort(null)
-      .value(d => d.population);
+      .value((d) => d.population);
 
     return (
       <div>
         <div style={{left: '10px', position: 'absolute', top: '10px'}}>
-          {['Pie', 'Donut'].map(t => (
+          {['Pie', 'Donut'].map((t) => (
             <label key={t} style={{marginRight: '10px'}}>
               <input
                 checked={t.toLowerCase() === type}
@@ -75,7 +75,7 @@ class PieChartExample extends React.Component {
     );
   }
 
-  _handleChange = e => {
+  _handleChange = (e) => {
     this.setState({type: e.target.value});
   }
 }

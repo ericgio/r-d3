@@ -47,8 +47,8 @@ class StreamgraphExample extends React.Component {
 
     const y = d3.scaleLinear()
       .domain([
-        d3.min(layers, l => d3.min(l, d => d[0])),
-        d3.max(layers, l => d3.max(l, d => d[1])),
+        d3.min(layers, (l) => d3.min(l, (d) => d[0])),
+        d3.max(layers, (l) => d3.max(l, (d) => d[1])),
       ])
       .range([height, 0]);
 
@@ -58,14 +58,14 @@ class StreamgraphExample extends React.Component {
       <Chart
         height={height}
         width={width}>
-        {layers.map(d => (
+        {layers.map((d) => (
           <Area
             data={d}
             fill={z(Math.random())}
             key={d.key}
             x={(d, i) => x(i)}
-            y0={d => y(d[0])}
-            y1={d => y(d[1])}
+            y0={(d) => y(d[0])}
+            y1={(d) => y(d[1])}
           />
         ))}
       </Chart>

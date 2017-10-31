@@ -19,7 +19,7 @@ class ScatterPlotExample extends React.Component {
     const innerWidth = getInnerWidth(width, margin);
 
     const data = [];
-    flowerData.forEach(d => {
+    flowerData.forEach((d) => {
       data.push({
         ...d,
         sepalLength: +d.sepalLength,
@@ -28,12 +28,12 @@ class ScatterPlotExample extends React.Component {
     });
 
     const x = d3.scaleLinear()
-      .domain(d3.extent(data, d => d.sepalWidth))
+      .domain(d3.extent(data, (d) => d.sepalWidth))
       .nice()
       .range([0, innerWidth]);
 
     const y = d3.scaleLinear()
-      .domain(d3.extent(data, d => d.sepalLength))
+      .domain(d3.extent(data, (d) => d.sepalLength))
       .nice()
       .range([innerHeight, 0]);
 

@@ -21,7 +21,7 @@ class BarChartStackedExample extends React.Component {
     const {columns} = stateData;
     const keys = columns.slice(1);
 
-    const data = stateData.map(d => {
+    const data = stateData.map((d) => {
       let total = 0;
       for (let ii = 1; ii < columns.length; ++ii) {
         total += d[columns[ii]] = +d[columns[ii]];
@@ -31,13 +31,13 @@ class BarChartStackedExample extends React.Component {
     data.sort((a, b) => b.total - a.total);
 
     const x = d3.scaleBand()
-      .domain(data.map(d => d.State))
+      .domain(data.map((d) => d.State))
       .rangeRound([0, innerWidth])
       .paddingInner(0.05)
       .align(0.1);
 
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.total)])
+      .domain([0, d3.max(data, (d) => d.total)])
       .nice()
       .rangeRound([innerHeight, 0]);
 
@@ -70,7 +70,7 @@ class BarChartStackedExample extends React.Component {
           className="y-axis"
           orient="left"
           scale={y}
-          tickFormat={pop => `${pop / 1000000}M`}>
+          tickFormat={(pop) => `${pop / 1000000}M`}>
           <text
             dy="0.32em"
             fill="#000"
@@ -81,9 +81,9 @@ class BarChartStackedExample extends React.Component {
             Population
           </text>
         </Axis>
-        {stackedData.map(d => (
+        {stackedData.map((d) => (
           <g fill={z(d.key)} key={d.key}>
-            {d.map(s => (
+            {d.map((s) => (
               <Bar
                 height={y(s[0]) - y(s[1])}
                 key={s.data.State}

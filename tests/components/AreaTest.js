@@ -22,7 +22,7 @@ const props = {
   data,
   x: (d, i) => x(i),
   y0: height,
-  y1: d => y(d),
+  y1: (d) => y(d),
 };
 
 describe('<Area>', () => {

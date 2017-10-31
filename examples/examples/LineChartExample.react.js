@@ -20,7 +20,7 @@ class LineChartExample extends React.Component {
 
     const parseTime = d3.timeParse('%d-%b-%y');
     const data = [];
-    stockData.forEach(d => {
+    stockData.forEach((d) => {
       data.push({
         close: +d.close,
         date: parseTime(d.date),
@@ -28,11 +28,11 @@ class LineChartExample extends React.Component {
     });
 
     const x = d3.scaleTime()
-      .domain(d3.extent(data, d => d.date))
+      .domain(d3.extent(data, (d) => d.date))
       .rangeRound([0, innerWidth]);
 
     const y = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.close)])
+      .domain([0, d3.max(data, (d) => d.close)])
       .rangeRound([innerHeight, 0]);
 
     return (
@@ -62,8 +62,8 @@ class LineChartExample extends React.Component {
         <Line
           data={data}
           stroke="steelblue"
-          x={d => x(d.date)}
-          y={d => y(d.close)}
+          x={(d) => x(d.date)}
+          y={(d) => y(d.close)}
         />
       </Chart>
     );

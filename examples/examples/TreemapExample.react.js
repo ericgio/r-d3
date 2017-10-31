@@ -15,14 +15,14 @@ class TreemapExample extends React.Component {
     const format = d3.format(',d');
 
     const color = d3.scaleOrdinal()
-      .range(d3.schemeCategory10.map(c => {
+      .range(d3.schemeCategory10.map((c) => {
         c = d3.rgb(c);
         c.opacity = 0.6;
         return c;
       }));
 
     const stratify = d3.stratify()
-      .parentId(d => d.id.substring(0, d.id.lastIndexOf('.')));
+      .parentId((d) => d.id.substring(0, d.id.lastIndexOf('.')));
 
     const treemap = d3.treemap()
       .size([width, height])
@@ -30,12 +30,12 @@ class TreemapExample extends React.Component {
       .round(true);
 
     const root = stratify(data)
-      .sum(d => d.value)
+      .sum((d) => d.value)
       .sort((a, b) => b.height - a.height || b.value - a.value);
 
     treemap(root);
 
-    const getColor = d => {
+    const getColor = (d) => {
       while (d.depth > 1) {
         d = d.parent;
       }
@@ -44,7 +44,7 @@ class TreemapExample extends React.Component {
 
     return (
       <div style={{height}}>
-        {root.leaves().map(d => (
+        {root.leaves().map((d) => (
           <div
             className="node"
             key={d.id}

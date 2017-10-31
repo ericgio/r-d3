@@ -29,7 +29,7 @@ class AreaChartStackedExample extends React.Component {
     });
 
     const x = d3.scaleTime()
-      .domain(d3.extent(data, d => d.date))
+      .domain(d3.extent(data, (d) => d.date))
       .range([0, innerWidth]);
 
     const y = d3.scaleLinear()
@@ -56,9 +56,9 @@ class AreaChartStackedExample extends React.Component {
           className="y-axis"
           orient="left"
           scale={y}
-          tickFormat={d => `${d}%`}
+          tickFormat={(d) => `${d}%`}
         />
-        {stack(data).map(b => {
+        {stack(data).map((b) => {
           const last = b.length - 1;
 
           // Filter out browsers with less than 1% market share.
@@ -71,9 +71,9 @@ class AreaChartStackedExample extends React.Component {
               <Area
                 data={b}
                 fill={z(b.key)}
-                x={d => x(d.data.date)}
-                y0={d => y(d[0])}
-                y1={d => y(d[1])}
+                x={(d) => x(d.data.date)}
+                y0={(d) => y(d[0])}
+                y1={(d) => y(d[1])}
               />
               <text
                 dy=".35em"

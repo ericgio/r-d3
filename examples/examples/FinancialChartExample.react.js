@@ -26,21 +26,21 @@ class FinancialChartExample extends React.Component {
     const keys = ohlcData.columns.slice(1);
     const parseDate = d3.timeParse('%d-%b-%y');
     const data = [];
-    ohlcData.slice(50, 200).forEach(d => {
+    ohlcData.slice(50, 200).forEach((d) => {
       const date = parseDate(d.Date);
       const n = {date};
-      keys.forEach(k => n[k.toLowerCase()] = +d[k]);
+      keys.forEach((k) => n[k.toLowerCase()] = +d[k]);
       data.push(n);
     });
 
     const x = d3.scaleTime()
-      .domain(d3.extent(data, d => d.date))
+      .domain(d3.extent(data, (d) => d.date))
       .rangeRound([0, innerWidth]);
 
     const y = d3.scaleLinear()
       .domain([
-        d3.min(data, d => d3.min([d.close, d.high, d.low, d.open])) - 1,
-        d3.max(data, d => d3.max([d.close, d.high, d.low, d.open])) + 1,
+        d3.min(data, (d) => d3.min([d.close, d.high, d.low, d.open])) - 1,
+        d3.max(data, (d) => d3.max([d.close, d.high, d.low, d.open])) + 1,
       ])
       .rangeRound([innerHeight, 0]);
 
@@ -51,7 +51,7 @@ class FinancialChartExample extends React.Component {
     return (
       <div>
         <div style={{right: '10px', position: 'absolute', top: '10px'}}>
-          {['Candlestick', 'OHLC'].map(t => (
+          {['Candlestick', 'OHLC'].map((t) => (
             <label key={t} style={{marginRight: '10px'}}>
               <input
                 checked={t.toLowerCase() === type}
@@ -86,7 +86,7 @@ class FinancialChartExample extends React.Component {
               Price ($)
             </text>
           </Axis>
-          {data.map(d => (
+          {data.map((d) => (
             <Component
               {...d}
               key={d.date.getTime()}
@@ -100,7 +100,7 @@ class FinancialChartExample extends React.Component {
     );
   }
 
-  _handleChange = e => {
+  _handleChange = (e) => {
     this.setState({type: e.target.value});
   }
 }
